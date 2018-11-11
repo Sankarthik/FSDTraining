@@ -22,6 +22,7 @@ export class EditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log(this.route.snapshot.paramMap.get('id'));
     this.taskService.getTask(this.route.snapshot.paramMap.get('id')).then(value => {
       this.task = value;
     });
