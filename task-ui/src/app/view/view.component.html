@@ -1,0 +1,68 @@
+<div class="container">
+  <form>
+    <div class="row">
+      <div class="col-12">
+        <div class="card text-center">
+          <div class="card-header"> View Task</div>
+          <div class="card-body">
+
+            <div class="row">
+              <div class="col-md-3  mb-3"><label for="filterId">Task</label></div>
+              <div class="col-md-3  mb-3"><input type="text" name="task" [(ngModel)]="filterId" class="form-control"
+                                                 id="filterId"></div>
+              <div class="col-md-3  mb-3"><label for="parentTaskFilterId">Parent Task</label></div>
+              <div class="col-md-3  mb-3"><input type="text" name="parentTask" [(ngModel)]="parentTaskFilterId"
+                                                 class="form-control" id="parentTaskFilterId"></div>
+              <div class="col-md-3  mb-3"><label for="priorityFromFilterId">Priority From</label></div>
+              <div class="col-md-3  mb-3"><input type="text" class="form-control" name="priorityFrom"
+                                                 [(ngModel)]="priorityFromFilterId" id="priorityFromFilterId"></div>
+              <div class="col-md-3  mb-3"><label for="priorityToFilterId">Priority To</label></div>
+              <div class="col-md-3  mb-3"><input type="text" class="form-control" name="priorityTo"
+                                                 [(ngModel)]="priorityToFilterId" id="priorityToFilterId"></div>
+              <div class="col-md-3"><label for="startDate" i18n="@@label.startDate">Start Date</label></div>
+              <div class="col-md-3"><input type="date" name="startDate" [(ngModel)]="startDateFilter"
+                                           class="form-control" id="startDate"></div>
+              <div class="col-md-3"><label for="endDate" i18n="@@label.endDate">End Date</label></div>
+              <div class="col-md-3"><input type="date" name="endDate" [(ngModel)]="endDateFilter" class="form-control"
+                                           id="endDate"></div>
+            </div>
+            <br>
+            <div class="row">
+              <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Task</th>
+                  <th scope="col">Parent Task</th>
+                  <th scope="col">Priority</th>
+                  <th scope="col">Start Date</th>
+                  <th scope="col">End Date</th>
+                  <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr
+                  *ngFor="let t of tasks | TaskFilter : filterId : parentTaskFilterId : priorityFromFilterId : priorityToFilterId : startDateFilter : endDateFilter">
+                  <td>{{t.id}}</td>
+                  <td>{{t.task}}</td>
+                  <td>{{t.parentTask?t.parentTask.id: null}}</td>
+                  <!-- <td (click)="update(t)">{{t.parentTask.task}}</td>-->
+                  <td>{{t.priority}}</td>
+                  <!--<td>{{t.startDate}}</td>-->
+                  <td>{{t.startDate | date:"dd-MM-yyyy"}}</td>
+                  <td>{{t.endDate | date:"dd-MM-yyyy"}}</td>
+                  <td>
+                    <button type="button" class="btn btn-primary mr-3" (click)="update(t)">Edit</button>
+                    <button type="button" class="btn btn-primary" (click)="delete(t)">Delete</button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

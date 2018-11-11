@@ -1,24 +1,16 @@
 package com.cts.casestudy.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 
 @Entity
 public class ParentTask {
 
 	@Id
 	Integer id;
-	String name;
-	
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
+	@Size(max = 100)
+	String task;
 
 	public void setId(Integer id) {
 		this.id = id;
@@ -26,15 +18,23 @@ public class ParentTask {
 
 	public Integer getId() {
 		return id;
+	}	
+
+	public String getTask() {
+		return task;
 	}
 
-	public ParentTask(Integer id, String name) {
-		super();
-		this.id = id;
-		this.name = name;
+	public void setTask(String task) {
+		this.task = task;
 	}
-
+	
 	public ParentTask() {
 		super();
+	}
+	
+	public ParentTask(Integer id, String task) {
+		super();
+		this.id = id;
+		this.task = task;
 	}
 }

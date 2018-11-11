@@ -7,10 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.OptBoolean;
@@ -23,28 +27,23 @@ public class Task {
 	private Integer id;
 	
 	@NotNull
-	private String name;
+	@Size(max = 100)
+	private String task;
 	
 	@Temporal(TemporalType.DATE)
-	@JsonFormat(shape = JsonFormat.Shape.STRING, lenient = OptBoolean.FALSE, pattern = "dd-MM-yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, lenient = OptBoolean.FALSE, pattern = "yyyy-MM-dd")
 	private Date startDate;
 	
 	@Temporal(TemporalType.DATE)
-	@JsonFormat(shape = JsonFormat.Shape.STRING, lenient = OptBoolean.FALSE, pattern = "dd-MM-yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, lenient = OptBoolean.FALSE, pattern = "yyyy-MM-dd")
 	private Date endDate;
 	
+	@Min(0) @Max(30)
 	private Integer priority;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
-	private ParentTask parentTask;	
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
+    @JoinColumn(name = "PARENT_TASK_ID")
+	private ParentTask parentTask;		
 
 	public Date getStartDate() {
 		return startDate;
@@ -69,11 +68,7 @@ public class Task {
 	public void setPriority(Integer priority) {
 		this.priority = priority;
 	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
+	
 	public ParentTask getParentTask() {
 		return parentTask;
 	}
@@ -82,29 +77,29 @@ public class Task {
 		this.parentTask = parentTask;
 	}
 
+	public String getTask() {
+		return task;
+	}
+
+	public void setTask(String task) {
+		this.task = task;
+	}
+
 	public Integer getId() {
 		return id;
 	}
 
-	public Task(Integer id, String name, Date startDate, Date endDate, Integer priority, ParentTask parentTask) {
+	public Task(Integer id, @NotNull String task, Date startDate, Date endDate, Integer priority,
+			ParentTask parentTask) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.task = task;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.priority = priority;
 		this.parentTask = parentTask;
 	}
-
-	public Task(Integer id, String name, Date startDate, Date endDate, Integer priority) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.priority = priority;
-	}
-
+	
 	public Task() {
 		super();
 	}

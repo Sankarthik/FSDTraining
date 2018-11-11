@@ -42,9 +42,7 @@ public class TaskManagerService {
 			if(pt.isPresent()) {
 				task.setParentTask(pt.get());
 			} else {
-				ParentTask parentTask = new ParentTask();
-				parentTask.setId(task.getParentTask().getId());
-				parentTask.setName(optTask.get().getName());
+				ParentTask parentTask = new ParentTask(task.getParentTask().getId(), optTask.get().getTask());				
 				task.setParentTask(parentTask);
 			}
 		}

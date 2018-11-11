@@ -11,12 +11,12 @@ import com.cts.casestudy.entities.Task;
 @Repository
 public interface TaskManagerRepository extends JpaRepository<Task, Integer>{
 
-	public List<Task> findByName(String name);
+	public List<Task> findByTask(String task);
 	public List<Task> findByStartDate(Date startDate);
 	public List<Task> findByEndDate(Date endDate);
 	public List<Task> findByPriorityBetween(Integer from, Integer to);
 	public List<Task> findByPriorityGreaterThanEqual(Integer priority);
 	public List<Task> findByPriorityLessThanEqual(Integer priority);
-	public List<Task> findByParentTaskName(String name);
+	public List<Task> findByParentTaskTask(String name);
 	public List<Task> findByParentTaskId(Integer id);
 }
