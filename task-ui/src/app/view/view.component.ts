@@ -11,12 +11,12 @@ import {TaskService} from '../service/task.service';
 export class ViewComponent implements OnInit {
   tasks: Task[];
   filterTask: Task;
-  filterId: number;
-  parentTaskFilterId: number;
-  priorityFromFilterId: number;
-  priorityToFilterId: number;
-  startDateFilter: Date;
-  endDateFilter: Date;
+  filterByName: string;
+  filterByParentTask: number;
+  filterByPriorityFrom: number;
+  filterByPriorityTo: number;
+  filterByStartDate: Date;
+  filterByEndDate: Date;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -43,5 +43,12 @@ export class ViewComponent implements OnInit {
           this.getTasks();
         }
       );
+  }
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
   }
 }
