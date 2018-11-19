@@ -62,9 +62,9 @@
                   <td>{{t.startDate | date:"dd-MM-yyyy"}}</td>
                   <td>{{t.endDate | date:"dd-MM-yyyy"}}</td>
                   <td>
-                    <button type="button" class="btn btn-primary mr-3" (click)="update(t)">Edit</button>
-                    <!-- <button type="button" class="btn btn-primary" (click)="delete(t)">End Task</button> -->
-                    <button type="button" class="btn btn-primary" (click)="delete(t)">Delete</button>
+                    <button type="button" class="btn btn-primary mr-3" [disabled] = isTaskExpired(t) (click)="update(t)">Edit</button>
+                    <button type="button" class="btn btn-primary" [disabled] = isTaskExpired(t) *ngIf="isTaskActive(t)" (click)="finishTask(t)">End Task</button>
+                    <button type="button" class="btn btn-primary" [disabled] = isTaskExpired(t) *ngIf="!isTaskActive(t)" (click)="delete(t)">Delete</button>
                   </td>
                 </tr>
               </tbody>

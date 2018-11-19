@@ -7,7 +7,7 @@
             <div class="form-group row">
               <label for="inputTask" class="col-sm-2 col-form-label">Task:</label>
               <div class="col-sm-5">
-                  <input #title="ngModel" [(ngModel)]="task.task" class="form-control" name="title" type="text" placeholder="Task Name" required/>
+                  <input #taskName="ngModel" [(ngModel)]="task.task" class="form-control" name="taskName" type="text" placeholder="Task Name" required/>
                </div>
             </div>
 
@@ -41,9 +41,14 @@
                     <input #endDate="ngModel" [(ngModel)]="task.endDate" class="form-control" name="etDate" type="date"/>
                 </div>
             </div>
+            <!-- Displaying error message Option-->
+            <div class="form-group row">
+                <div *ngIf="!!(errorMsg)" class="alert alert-danger" role="alert"> {{ errorMsg }} </div>
+            </div>
+            
       <div class="col-md-4 text-center"> 
       <button type="button" class="btn btn-primary mr-3" (click)="onSubmit()">Add</button>
-      <button type="reset" class="btn btn-primary mr-3">Reset</button>
+      <button type="reset" class="btn btn-primary mr-3" (click)="reset()">Reset</button>
       </div>
     </div>
   </form>

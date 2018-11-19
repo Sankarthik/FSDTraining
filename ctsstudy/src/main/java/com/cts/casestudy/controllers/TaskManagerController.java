@@ -44,4 +44,9 @@ public class TaskManagerController {
 	public void deleteTask(@PathVariable Integer id){
 		 service.deleteTask(id);
 	}
+	
+	@RequestMapping(path="/tasks/{id}", method=RequestMethod.PUT)
+	public void endTask(@PathVariable Integer id){
+		 service.endTask(id);
+	}
 }

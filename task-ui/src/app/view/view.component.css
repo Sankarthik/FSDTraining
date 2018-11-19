@@ -1,8 +1,6 @@
  .tbody{
-    overflow:auto;
+    overflow-y:auto;
     position: relative; 
-    height:5px;
-    /* text-size-adjust: initial; */  
     color: rgb(15, 15, 221);
   }
 

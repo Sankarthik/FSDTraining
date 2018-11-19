@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Task} from '../model/task';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TaskService} from '../service/task.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-task-view',
@@ -17,6 +18,7 @@ export class ViewComponent implements OnInit {
   filterByPriorityTo: number;
   filterByStartDate: Date;
   filterByEndDate: Date;
+  currentDate: Date;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -27,6 +29,7 @@ export class ViewComponent implements OnInit {
   ngOnInit() {
     this.getTasks();
     this.filterTask = new Task();
+    this.currentDate =  new Date();
   }
 
   getTasks(): void {
@@ -44,11 +47,32 @@ export class ViewComponent implements OnInit {
         }
       );
   }
+
+  finishTask(t: Task): void {
+    t.endDate = new Date(moment.now());
+    // console.log(t.endDate);
+    // console.log(moment(moment.now()).utc().format());
+    this.taskService.updateTask(t.id, t)
+      .then(
+        value => {
+          this.getTasks();
+        }
+      );
+  }
   numberOnly(event): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
       return false;
     }
     return true;
+  }
+
+  isTaskActive(t: Task): boolean {
+    return moment(t.startDate).isSameOrBefore(moment())
+           && (t.endDate == null || moment(t.endDate).isAfter(moment()));
+  }
+
+  isTaskExpired(t: Task): boolean {
+    return moment(t.endDate).isBefore(moment())
   }
 }

@@ -1,5 +1,6 @@
 package com.cts.casestudy.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -56,5 +57,14 @@ public class TaskManagerService {
 	
 	public void deleteTask(Integer id){
 		repo.deleteById(id);
+	}
+	
+	public void endTask(Integer id){
+		Optional<Task> taskOpt = repo.findById(id);
+		if(taskOpt.isPresent()) {
+			Task task = taskOpt.get();
+			task.setEndDate(new Date());
+			repo.save(task);
+		}
 	}
 }

@@ -30,6 +30,7 @@ public class Task {
 	@Size(max = 100)
 	private String task;
 	
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, lenient = OptBoolean.FALSE, pattern = "yyyy-MM-dd", timezone = "CET")
 	private Date startDate;

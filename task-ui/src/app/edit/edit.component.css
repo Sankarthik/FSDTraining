@@ -35,3 +35,10 @@
     background: #4CAF50;
     cursor: pointer;
   } */
+
+  .alert {
+    margin-left: 10%;
+    /* background-color: rgb(233, 55, 32); */
+    text-align: right;
+    font-weight: bold
+  }
