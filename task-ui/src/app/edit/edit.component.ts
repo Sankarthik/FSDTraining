@@ -29,10 +29,10 @@ export class EditComponent implements OnInit {
   ngOnInit() {
     console.log(this.route.snapshot.paramMap.get('id'));
     this.taskService.getTask(this.route.snapshot.paramMap.get('id')).then(value => {
-      console.log(value);
       this.task = value;
     });
-    this.today = new Date();
+    this.today = moment().format('YYYY-MM-DD');
+    console.log(this.today);
   }
   onSubmit() {
     if(!this.validateForm()) {
@@ -44,6 +44,10 @@ export class EditComponent implements OnInit {
        value => { this.router.navigate(['./view']);
        }
       );
+  }
+
+  onCancel() {   
+   this.router.navigate(['./view']);    
   }
 
   public validateForm() {

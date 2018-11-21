@@ -1,5 +1,9 @@
 package com.cts.casestudy.service;
 
+import static org.junit.Assert.assertNotNull;
+
+import java.util.Date;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,20 +21,27 @@ public class TaskManagerServiceTest {
 
     @Test
     public void findAllTasks() {
+    	addTask();
+    	assertNotNull(taskService.findAllTasks());
     }
 
     @Test
     public void findById() {
+    	assertNotNull(taskService.findTask(1));
     }
 
     @Test
     public void updateTask() {
+    	final Task task = taskService.findTask(1);
+    	task.setEndDate(new Date());
+    	taskService.updateTask(task);
     }
 
     @Test
     public void addTask() {
         final Task task = new Task();
         task.setTask("Test Task");
+        task.setStartDate(new Date());
         taskService.addTask(task);
     }
 

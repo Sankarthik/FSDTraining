@@ -65,10 +65,10 @@
               <div class="form-group row">
                   <label for="inputEndDate" class="col-sm-2 col-form-label">End Date:</label>
                   <div class="col-sm-5">
-                      <input #endDate="ngModel" [(ngModel)]="task.endDate" class="form-control" name="etDate" type="date"/>
+                      <input #endDate="ngModel" min="{{today}}" [(ngModel)]="task.endDate" class="form-control" name="etDate" type="date"/>
                   </div>
               </div>
-
+             
                <!-- Displaying error message Option-->
             <div class="form-group row">
                 <div *ngIf="!!(errorMsg)" class="alert alert-danger" role="alert"> {{ errorMsg }} </div>
@@ -76,7 +76,7 @@
 
         <div class="col-md-4 text-center"> 
           <button type="button" class="btn btn-primary mr-3" (click)="onSubmit()">Update</button>
-          <button type="button" class="btn btn-primary mr-3" (click)="onSubmit()">Cancel</button>
+          <button type="button" class="btn btn-primary mr-3" (click)="onCancel()">Cancel</button>
         </div>
       </div>
     </form>
