@@ -3,9 +3,13 @@
 Application is to manage the Task with the below business functionalities.
 
 User can view all the existing tasks and also filter the tasks in Frontend. (Backend JPA Filter is defined and not implemented on purpose)
+
 User can add a new task with mandatory fields of Task name and Start date.
+
 User can edit an existing task
+
 User can end the task by clicking the End Task which will set the current date as End
+
 Disable Behaviour
 -----------------
 Task row will be shown with Edit and Delete button in case of start date of the task is future.
