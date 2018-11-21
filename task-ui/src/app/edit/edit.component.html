@@ -11,7 +11,7 @@
                 <label for="inputTask" class="col-sm-2 col-form-label">Task:</label>
                 <div class="col-sm-5">
                     <input #taskName="ngModel" [(ngModel)]="task.task" class="form-control" name="taskName" type="text" required/>
-                 </div>
+                </div>
                  <!-- <div *ngIf="taskName.errors && (taskName.dirty || taskName.touched)" class="alert alert-danger">
                         <div [hidden]="!taskName.errors.required">
                           Task Name is required!
@@ -29,7 +29,7 @@
               <div class="form-group row" *ngIf="parents?.length > 0">
                   <label for="inputParentTask" class="col-sm-2 col-form-label">Parent Task:</label>
                   <div class="col-sm-5">
-                      <select class="form-control" id="parentTask" name="parent" [(ngModel)]="parentId">
+                      <select class="form-control" id="parentTask" name="parentTask" [(ngModel)]="parentId">
                           <option *ngFor="let parent of parents" value="{{parent.id}}">{{parent.task}}</option>
                         </select>
                    </div>
@@ -39,28 +39,8 @@
                   <label for="inputStartDate" class="col-sm-2 col-form-label">Start Date:</label>
                   <div class="col-sm-5">
                       <input #startDate="ngModel" min="{{task.startDate}}" [(ngModel)]="task.startDate" class="form-control" name="stDate" type="date" required/>
-                   </div>
-                   <!-- {{task.startDate}}
-                    <div *ngIf="startDate.errors && (startDate.dirty || startDate.touched)" class="alert alert-danger">
-                        <div [hidden]="!startDate.errors.min">
-                          Start Date should be greater than today
-                        </div> 
-                        <div [hidden]="!startDate.errors.required">
-                          Start Date is required!
-                        </div> 
-                    </div> -->
+                   </div>                  
               </div>
-
-                <!-- <mat-form-field class="example-full-width">
-                    <input #startDate="ngModel" [(ngModel)]="task.startDate" class="form-control" name="stDate" 
-                      matInput  [min] = "today" [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="task.startDate | date:'dd-MM-yyyy'">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                  </mat-form-field> -->
-
-
-
-
   
               <div class="form-group row">
                   <label for="inputEndDate" class="col-sm-2 col-form-label">End Date:</label>

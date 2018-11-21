@@ -50,8 +50,6 @@ export class ViewComponent implements OnInit {
 
   finishTask(t: Task): void {
     t.endDate = new Date(moment.now());
-    // console.log(t.endDate);
-    // console.log(moment(moment.now()).utc().format());
     this.taskService.updateTask(t.id, t)
       .then(
         value => {

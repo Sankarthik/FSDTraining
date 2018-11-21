@@ -33,7 +33,6 @@ export class AddComponent implements OnInit {
 
   onSubmit() {
     if(!this.validateForm()) {
-      console.log(this.errorMsg);
       return false;
     }
 
