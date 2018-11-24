@@ -8,9 +8,9 @@ import javax.validation.constraints.Size;
 public class ParentTask {
 
 	@Id
-	Integer id;
+	private Integer id;
 	@Size(max = 100)
-	String task;
+	private String task;
 
 	public void setId(Integer id) {
 		this.id = id;
