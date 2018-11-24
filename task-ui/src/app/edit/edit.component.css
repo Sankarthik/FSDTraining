@@ -16,10 +16,6 @@
     transition: opacity .2s;
   }
   
-  /* .slider:hover {
-    opacity: 1;
-  } */
-  
   .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -28,17 +24,9 @@
     background: rgb(76, 59, 235);
     cursor: pointer;
   }
-  
-  /* .slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    background: #4CAF50;
-    cursor: pointer;
-  } */
 
   .alert {
     margin-left: 10%;
-    /* background-color: rgb(233, 55, 32); */
     text-align: right;
     font-weight: bold
   }

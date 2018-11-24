@@ -2,15 +2,25 @@ import { DatePipe } from '@angular/common';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Task} from '../model/task';
+import { AppComponent } from '../app.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
   http: HttpClient;
-  taskHttpUrl = 'http://localhost:8080/tasks/';
+  //When using Docker host
+  //taskHttpUrl: string = 'http://192.168.99.100:8080/tasks/'; 
+  
+  //When using local host
+  taskHttpUrl: string = 'http://localhost:8080/tasks/';
 
-  constructor(http: HttpClient, private datePipe : DatePipe ) {
+  // constructor(http: HttpClient, private datePipe : DatePipe, private api : AppComponent ) {
+  //   this.http = http;
+  //   this.taskHttpUrl = api.endpoint +'/tasks/';
+  // }
+
+  constructor(http: HttpClient, private datePipe : DatePipe) {
     this.http = http;
   }
 

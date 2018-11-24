@@ -10,7 +10,8 @@ import com.cts.casestudy.entities.Task;
 
 @Repository
 public interface TaskManagerRepository extends JpaRepository<Task, Integer>{
-
+	
+	//Below implementation for filters in backend in case needed
 	public List<Task> findByTask(String task);
 	public List<Task> findByStartDate(Date startDate);
 	public List<Task> findByEndDate(Date endDate);

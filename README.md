@@ -37,11 +37,13 @@ To build and run the project in Docker
 ----------------------------------------
 Front End Steps
 ----------------
+	 Step 1 -> docker build --rm -f "Dockerfile" -t task-mgr-ui-1.0 .
+	 Step 2 -> docker run --rm -d -p 8085:80/tcp task-mgr-ui-1.0:latest
 
 
 My Sql Docker Steps
 --------------------
-  Step 1 -> docker pull mysql
+  Step 1 -> docker pull mysql:latest
   Step 2 -> docker run -p 3306:3306 --name mysql-standalone -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=cogdb -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin -d mysql:latest
 
 
@@ -49,8 +51,8 @@ Backend Steps
 ---------------
 From the Dockerfile location in docker terminal ->  
 		Step 1->	docker build -f Dockerfile -t task-mgr-springboot-1.0 . 
-		Step 2->    docker run -p 8080:8085 task-mgr-springboot-1.0 (Run alone without DB)
-		Step 3 ->   docker run -p 8080:8090 --name task-mgr-springboot-1.0 --link mysql-standalone:mysql -d task-mgr-springboot-1.0  (Run with my SQL)
-        Step 4 ->   docker logs mysql-standalone and docker logs task-mgr-springboot-1.0
+		Step 2->    docker run -p 8080:8080 task-mgr-springboot-1.0 (Run alone without DB) - Dont change PORT in docker vm's to avoid nightmares.:)
+		Step 3 ->   docker run -p 8080:8080 --name task-mgr-springboot-1.0 --link mysql-standalone:mysql -d task-mgr-springboot-1.0  (Run with my SQL)
+        Step 4 ->   docker logs -f mysql-standalone and docker logs -f task-mgr-springboot-1.0
 
 
