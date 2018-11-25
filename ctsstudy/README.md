@@ -1,28 +1,3 @@
-# TaskManager
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
--------------------------------------------------------------------------------
 
 ## FSD Task Manager Case Study
 
@@ -45,16 +20,28 @@ In case of end date is set with future date, then still Edit and End Task will b
 
 # Docker Build Image and Deploy into Docker HUB
 
-Docker HUB URL:  https://hub.docker.com/r/sankarthik30/task-mgr-ui-final-1.0/
+Docker HUB URL:  https://hub.docker.com/r/sankarthik30/task-mgr-springboot-final/
 Git REPO: https://github.com/Sankarthik/FSDTraining
 
 Build Steps:
 -------------
 
-1) Manual Build
-	
-	 Step 1 -> docker build --rm -f "Dockerfile" -t task-mgr-ui-3.0 .
-	 Step 2 -> docker run --rm -d -p 8085:80/tcp --name task-mgr-ui-3.0 task-mgr-ui-3.0:latest
+My Sql Docker Steps
+--------------------
+  Step 1 -> docker pull mysql:latest
+  
+  Step 2 -> docker run -p 3306:3306 --name mysql-standalone -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=cogdb -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin -d mysql:latest
+
+
+Backend Steps
+---------------
+1) From the Dockerfile location in docker terminal ->  
+		Step 1->    docker build -f Dockerfile -t task-mgr-springboot-1.0 . 
+				
+		Step 2 ->   docker run -p 8080:8080 --name task-mgr-springboot-1.0 --link mysql-standalone:mysql -d task-mgr-springboot-1.0  (Run with my SQL)
+		
+        Step 3 ->   docker logs -f mysql-standalone and docker logs -f task-mgr-springboot-1.0 to verify logs
+		
 	 
 2) Using Jenkinsfile
 	1) docker pull jenkinssci/blueocean
