@@ -37,8 +37,8 @@ To build and run the project in Docker
 ----------------------------------------
 Front End Steps
 ----------------
-	 Step 1 -> docker build --rm -f "Dockerfile" -t task-mgr-ui-1.0 .
-	 Step 2 -> docker run --rm -d -p 8085:80/tcp task-mgr-ui-1.0:latest
+	 Step 1 -> docker build --rm -f "Dockerfile" -t task-mgr-ui-3.0 .
+	 Step 2 -> docker run --rm -d -p 8085:80/tcp --name task-mgr-ui-3.0 task-mgr-ui-3.0:latest
 
 
 My Sql Docker Steps
@@ -57,6 +57,12 @@ From the Dockerfile location in docker terminal ->
 		
 		Step 3 ->   docker run -p 8080:8080 --name task-mgr-springboot-1.0 --link mysql-standalone:mysql -d task-mgr-springboot-1.0  (Run with my SQL)
 		
-                Step 4 ->   docker logs -f mysql-standalone and docker logs -f task-mgr-springboot-1.0 to verify logs
+        Step 4 ->   docker logs -f mysql-standalone and docker logs -f task-mgr-springboot-1.0 to verify logs
+		
+		
+Jenkins Steps inside Docker
+---------------------------
+1) Add .gitconfig file to add sslVerify = false in Jenkins_Home dir inside Docker container.
+2) Add 
 
 

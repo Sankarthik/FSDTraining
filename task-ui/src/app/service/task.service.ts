@@ -10,10 +10,10 @@ import { AppComponent } from '../app.component';
 export class TaskService {
   http: HttpClient;
   //When using Docker host
-  //taskHttpUrl: string = 'http://192.168.99.100:8080/tasks/'; 
-  
+  taskHttpUrl: string = 'http://192.168.99.100:8080/tasks/'; 
+
   //When using local host
-  taskHttpUrl: string = 'http://localhost:8080/tasks/';
+  //taskHttpUrl: string = 'http://localhost:8080/tasks/';
 
   // constructor(http: HttpClient, private datePipe : DatePipe, private api : AppComponent ) {
   //   this.http = http;
