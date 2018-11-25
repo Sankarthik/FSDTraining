@@ -6,7 +6,7 @@ node {
    
    stage('Build Docker Image') {
       // Build image from Docker File path
-      sh 'docker build -t sankarthik30/task-mgr-boot:3.0 ./ctsstudy/'
+      sh 'docker build -f "./ctsstudy/Dockerfile" -t sankarthik30/task-mgr-boot:3.0 ./ctsstudy/
    }
    
    stage('Pushing Image into Docker Hub') {

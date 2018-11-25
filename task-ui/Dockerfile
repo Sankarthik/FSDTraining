@@ -1,5 +1,6 @@
 #stage - 1
 FROM node:latest as node
+LABEL maintainer="sankarkarthick@gmail.com"
 WORKDIR /app
 COPY . .
 RUN npm install
