@@ -26,6 +26,8 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 ## FSD Task Manager Case Study
 
+--------------------------------------------------------------------------------
+
 Application is to manage the Task with the below business functionalities.
 
 User can view all the existing tasks and also filter the tasks in Frontend. (Backend JPA Filter is defined and not implemented on purpose)
@@ -45,7 +47,7 @@ In case of end date is set with future date, then still Edit and End Task will b
 
 # Docker Build Image and Deploy into Docker HUB
 
-Docker HUB URL:  https://hub.docker.com/r/sankarthik30/task-mgr-ui-final-1.0/
+Docker HUB URL:  https://hub.docker.com/r/sankarthik30/task-mgr-ui-final:1.0/
 Git REPO: https://github.com/Sankarthik/FSDTraining
 
 Build Steps:

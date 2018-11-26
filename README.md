@@ -1,4 +1,5 @@
 # FSD Task Manager Case Study
+--------------------------------------------
 
 Application is to manage the Task with the below business functionalities.
 
@@ -25,6 +26,13 @@ This also uses Flyway db for db version management and change log.
 
 task ui - Frontend application uses Angular 6 and latest dependencies 
 
+
+# Docker Build Image and Deploy into Docker HUB
+
+
+Git REPO: https://github.com/Sankarthik/FSDTraining
+Frontend Docker HUB URL:  https://hub.docker.com/r/sankarthik30/task-mgr-ui-final:1.0/
+Backend Docker HUB URL:  https://hub.docker.com/r/sankarthik30/task-mgr-springboot-final/
 
 To run the project
 ---------------------
