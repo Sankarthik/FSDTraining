@@ -3,22 +3,15 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Task} from '../model/task';
 import { AppComponent } from '../app.component';
+import { environment } from '../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
   http: HttpClient;
-  //When using Docker host
-  taskHttpUrl: string = 'http://192.168.99.100:8080/tasks/'; 
-
-  //When using local host
-  //taskHttpUrl: string = 'http://localhost:8080/tasks/';
-
-  // constructor(http: HttpClient, private datePipe : DatePipe, private api : AppComponent ) {
-  //   this.http = http;
-  //   this.taskHttpUrl = api.endpoint +'/tasks/';
-  // }
+  taskHttpUrl:string = environment.apiUrl;
 
   constructor(http: HttpClient, private datePipe : DatePipe) {
     this.http = http;
